@@ -1,0 +1,20 @@
+[
+  {
+    "id": "example1",
+    "src": "music/song1.mp3",
+    "title": "Example Song 1",
+    "artist": "Artist Name",
+    "album": "Demo Album",
+    "cover": "music/covers/song1.jpg",
+    "lyrics": "These are the example lyrics for song 1.\nYou can put multi-line text here."
+  },
+  {
+    "id": "example2",
+    "src": "music/song2.mp3",
+    "title": "Example Song 2",
+    "artist": "Another Artist",
+    "album": "Another Album",
+    "cover": "music/covers/song2.jpg",
+    "lyrics": "lyrics/song2.txt"
+  }
+]
