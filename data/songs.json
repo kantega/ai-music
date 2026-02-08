@@ -49,5 +49,21 @@
     "album": "Make Trumpet Great Again",
     "cover": "music/covers/cfh_trumpet.jpg",
     "artist_comments": "comments/cfh_trumpettribute.txt"
+  },
+  {
+    "src": "music/cfh_trumpetyuge.mp3",
+    "title": "Make Trumpet Great Again (Yuge Edit)",
+    "artist": "DJ Kalifen (Carl Fredrik)",
+    "album": "Make Trumpet Great Again",
+    "cover": "music/covers/cfh_trumpet.jpg",
+    "artist_comments": "comments/cfh_trumpetyuge.txt"
+  },
+  {
+    "src": "music/cfh_trumpettribute.mp3",
+    "title": "Make Trumpet Great Again (Techno Remix)",
+    "artist": "DJ Kalifen (Carl Fredrik)",
+    "album": "Make Trumpet Great Again",
+    "cover": "music/covers/cfh_trumpet.jpg",
+    "artist_comments": "comments/cfh_trumpettechno.txt"
   }
 ]
