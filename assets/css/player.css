@@ -18,31 +18,23 @@ body{
   padding:1rem;
 }
 
-/* Player panel uses the uploaded image as a cover background with an overlay
-   so the UI remains readable. The overlay is implemented with ::before. */
 .player{
   max-width:900px;
   margin:0 auto;
   position:relative;
-  /* base color for instant paint and fallback */
   background-color: var(--brand-bg);
-  /* background image + subtle gradient overlay (image placed to the right) */
-  background-image: linear-gradient(180deg, rgba(255,255,255,0.02), transparent), url('assets/images/kantega.png');
-  background-size: cover;
-  background-position: center right;
-  background-repeat: no-repeat;
   padding:1rem;
   border-radius:8px;
   box-shadow:0 6px 24px rgba(0,0,0,0.5);
   overflow:hidden;
 }
 
-/* dark translucent layer over the image for contrast */
+/* dark translucent overlay for darker shade */
 .player::before{
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.42); /* tweak opacity to taste */
+  background: rgba(0,0,0,0.42);
   z-index: 1;
   border-radius: 8px;
   pointer-events: none;
