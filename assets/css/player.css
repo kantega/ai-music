@@ -66,13 +66,13 @@ body{
 }
 
 .player-left{
-  flex:1;
+  flex:6;
   min-width:0;
 }
 
 .player-right{
-  width:320px;
-  flex-shrink:0;
+  flex:4;
+  min-width:300px;
 }
 #brand-logo{
   height:44px;           /* tweak to taste */
@@ -199,12 +199,20 @@ body{
   padding:.75rem;
   border-radius:6px;
   max-height:400px;
-  overflow:auto;
+  overflow-y:auto;
+  overflow-x:hidden;
 }
 
 .lyrics h3{
   margin-top:0;
   margin-bottom:0.75rem;
+}
+
+.lyrics pre{
+  margin:0;
+  white-space:pre-wrap;
+  word-wrap:break-word;
+  overflow-wrap:break-word;
 }
 
 footer{margin-top:1rem;color:var(--muted);font-size:.9rem}
