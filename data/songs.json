@@ -1,19 +1,53 @@
 [
   {
+    "src": "music/cfh_zeepictf.mp3",
+    "title": "Ze Epic TF",
+    "artist": "DJ Kalifen (Carl Fredrik)",
+    "album": "Ze Epic TF",
+    "cover": "music/covers/cfh_zeepictf.jpg",
+    "artist_comments": "comments/cfh_zeepictf.txt"
+  },
+  {
     "src": "music/cfh_questionintro.mp3",
     "title": "Question Intro",
-    "artist": "DJ Kalifen / Carl Fredrik Hersoug",
+    "artist": "DJ Kalifen (Carl Fredrik)",
     "album": "Just Ask Yourself One Question",
     "cover": "music/covers/cfh_question.jpg",
-    "lyrics": "lyrics/question.txt",
-    "artist_comments": "comments/questionintro.txt"
+    "lyrics": "lyrics/cfh_question.txt",
+    "artist_comments": "comments/cfh_questionintro.txt"
+  },
+  {
+    "src": "music/cfh_questiontrance.mp3",
+    "title": "One Question (Trance Remix)",
+    "artist": "DJ Kalifen (Carl Fredrik)",
+    "album": "Just Ask Yourself One Question",
+    "cover": "music/covers/cfh_question.jpg",
+    "lyrics": "lyrics/cfh_question.txt",
+    "artist_comments": "comments/cfh_questiontrance.txt"
   },
   {
     "src": "music/cfh_questionbankrupt.mp3",
     "title": "One Question (Instrumental Bankrupt Remix)",
-    "artist": "DJ Kalifen / Carl Fredrik Hersoug",
+    "artist": "DJ Kalifen (Carl Fredrik)",
     "album": "Just Ask Yourself One Question",
     "cover": "music/covers/cfh_question.jpg",
-    "artist_comments": "comments/questionbankrupt.txt"
+    "artist_comments": "comments/cfh_questionbankrupt.txt"
+  },
+  {
+    "src": "music/cfh_questionoriginal.mp3",
+    "title": "One Question (Original Mix)",
+    "artist": "DJ Kalifen (Carl Fredrik)",
+    "album": "Just Ask Yourself One Question",
+    "cover": "music/covers/cfh_question.jpg",
+    "lyrics": "lyrics/cfh_question.txt",
+    "artist_comments": "comments/cfh_questionoriginal.txt"
+  },
+  {
+    "src": "music/cfh_trumpettribute.mp3",
+    "title": "Make Trumpet Great Again (Tribute To Fønkhagen)",
+    "artist": "DJ Kalifen (Carl Fredrik)",
+    "album": "Make Trumpet Great Again",
+    "cover": "music/covers/cfh_trumpet.jpg",
+    "artist_comments": "comments/cfh_trumpettribute.txt"
   }
 ]
