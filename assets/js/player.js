@@ -3,7 +3,6 @@
  *
  * Track object example:
  * {
- *   "id": "song1",
  *   "src": "music/song1.mp3",
  *   "title": "Song One",
  *   "artist": "Artist",
@@ -90,18 +89,18 @@
     }
     // lyrics can be a string or a URL
     if(!t.lyrics){
-      lyricsEl.textContent = 'No lyrics available.';
+      lyricsEl.textContent = 'Ingen lyrikk angitt.';
     } else if(typeof t.lyrics === 'string' && (t.lyrics.startsWith('http://') || t.lyrics.startsWith('https://') || t.lyrics.endsWith('.txt') || t.lyrics.endsWith('.lrc'))){
       try{
         const r = await fetch(t.lyrics);
         if(r.ok){
           const txt = await r.text();
-          lyricsEl.textContent = txt || 'No lyrics available.';
+          lyricsEl.textContent = txt || 'Ingen lyrikk angitt.';
         } else {
-          lyricsEl.textContent = 'No lyrics available.';
+          lyricsEl.textContent = 'Ingen lyrikk angitt.';
         }
       }catch(e){
-        lyricsEl.textContent = 'No lyrics available.';
+        lyricsEl.textContent = 'Ingen lyrikk angitt.';
       }
     } else {
       // inline lyrics text

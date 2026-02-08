@@ -1,6 +1,5 @@
 [
   {
-    "id": "song1",
     "src": "music/cfh_questionintro.mp3",
     "title": "Question Intro",
     "artist": "DJ Kalifen / Carl Fredrik Hersoug",
@@ -10,7 +9,6 @@
     "artist_comments": "Dette er introen til albumet.\n\nMusikken setter stemningen for det som kommer."
   },
   {
-    "id": "song2",
     "src": "music/cfh_questionbankrupt.mp3",
     "title": "One Question (Instrumental Bankrupt Remix)",
     "artist": "DJ Kalifen / Carl Fredrik Hersoug",
