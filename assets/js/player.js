@@ -51,9 +51,23 @@
     playlistEl.innerHTML = '';
     playlist.forEach((t, i) => {
       const li = document.createElement('li');
-      li.textContent = (t.title || t.src || `Track ${i + 1}`) + (t.artist ? ' — ' + t.artist : '');
       li.dataset.index = i;
       li.addEventListener('click', () => loadTrack(i, true));
+      
+      // Create title element
+      const titleEl = document.createElement('div');
+      titleEl.className = 'song-title';
+      titleEl.textContent = t.title || t.src || `Track ${i + 1}`;
+      
+      // Create artist element
+      const artistEl = document.createElement('div');
+      artistEl.className = 'song-artist';
+      artistEl.textContent = t.artist || '';
+      
+      // Append elements to list item
+      li.appendChild(titleEl);
+      li.appendChild(artistEl);
+      
       playlistEl.appendChild(li);
     });
     updateActive();
