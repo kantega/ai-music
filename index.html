@@ -1,68 +1,90 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Vår KI-genererte musikk</title>
-  <link rel="icon" type="image/png" href="https://media.licdn.com/dms/image/v2/D4D0BAQENond2Y_bESQ/company-logo_200_200/B4DZjhluVGGsAM-/0/1756131419830/kantega_logo?e=2147483647&v=beta&t=3wtCfyFBAlrDddMtlK6ZhIVT48iqkGx9SXttP6eWxo0" />
+  <link rel="icon" type="image/png"
+    href="https://media.licdn.com/dms/image/v2/D4D0BAQENond2Y_bESQ/company-logo_200_200/B4DZjhluVGGsAM-/0/1756131419830/kantega_logo?e=2147483647&v=beta&t=3wtCfyFBAlrDddMtlK6ZhIVT48iqkGx9SXttP6eWxo0" />
   <link rel="stylesheet" href="assets/css/player.css" />
 </head>
+
 <body>
   <main class="player">
     <header class="player-header">
       <div class="header-title">
         <h1>Vår KI-genererte musikk</h1>
-        <a href="https://blogg.kantega.no/kan-man-lage-musikk-med-et-tastetrykk" class="article-link" target="_blank" rel="noopener">Les artikkelen ↗</a>
+        <a href="https://blogg.kantega.no/kan-man-lage-musikk-med-et-tastetrykk" class="article-link" target="_blank"
+          rel="noopener">Les artikkelen ↗</a>
       </div>
       <img id="brand-logo"
-           src="https://media.licdn.com/dms/image/v2/D4D0BAQENond2Y_bESQ/company-logo_200_200/B4DZjhluVGGsAM-/0/1756131419830/kantega_logo?e=2147483647&v=beta&t=3wtCfyFBAlrDddMtlK6ZhIVT48iqkGx9SXttP6eWxo0"
-           alt="Company logo">
+        src="https://media.licdn.com/dms/image/v2/D4D0BAQENond2Y_bESQ/company-logo_200_200/B4DZjhluVGGsAM-/0/1756131419830/kantega_logo?e=2147483647&v=beta&t=3wtCfyFBAlrDddMtlK6ZhIVT48iqkGx9SXttP6eWxo0"
+        alt="Company logo">
     </header>
 
     <div class="player-layout">
-      <div class="player-left">
+      <div class="player-main">
+        <!-- Current Song Section - Always visible with integrated controls -->
         <section class="now-playing">
-          <img id="cover" alt="cover" src="" />
-          <div class="meta">
-            <h2 id="title">Ingen spor lastet</h2>
-            <p id="artist"></p>
-            <p id="album"></p>
+          <div class="now-playing-content">
+            <div class="cover-frame">
+              <img id="cover" alt="cover" src="" />
+              <div id="cover-placeholder" class="cover-placeholder">No cover</div>
+            </div>
+            <div class="meta">
+              <h2 id="title">Ingen spor lastet</h2>
+              <p id="artist"></p>
+              <p id="album"></p>
+
+              <div class="integrated-controls">
+                <div class="transport-controls">
+                  <button id="prev" title="Forrige">⏮</button>
+                  <button id="play" title="Spill">▶️</button>
+                  <button id="next" title="Neste">⏭</button>
+                </div>
+
+                <div class="progress-container">
+                  <div class="time">
+                    <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+                  </div>
+                  <input id="progress" type="range" min="0" max="100" value="0">
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
         <audio id="audio" preload="metadata"></audio>
 
-        <section class="controls">
-          <button id="prev" title="Forrige">⏮</button>
-          <button id="play" title="Spill">▶️</button>
-          <button id="next" title="Neste">⏭</button>
-          <div class="time">
-            <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
-          </div>
-          <input id="progress" type="range" min="0" max="100" value="0">
+        <!-- Lyrics Section - Collapsed by default -->
+        <section class="lyrics">
+          <h3>
+            <span>Sangtekst</span>
+            <button id="toggle-lyrics" class="toggle-btn section-toggle" title="Vis/skjul"
+              aria-label="Vis/skjul sangtekst">▶</button>
+          </h3>
+          <pre id="lyrics" class="collapsible-content collapsed">Ingen tilgjengelig sangtekst.</pre>
         </section>
 
-        <section class="playlist">
-          <h3>Spilleliste</h3>
-          <ul id="playlist"></ul>
-        </section>
-      </div>
-
-      <div class="player-right">
+        <!-- Artist Comments Section - Collapsed by default -->
         <section class="artist-comments">
           <h3>
-            Artistens kommentarer
-            <button id="toggle-comments" class="toggle-btn" title="Vis/skjul" aria-label="Vis/skjul kommentarer">▶</button>
+            <span>Artistens kommentarer</span>
+            <button id="toggle-comments" class="toggle-btn section-toggle" title="Vis/skjul"
+              aria-label="Vis/skjul kommentarer">▶</button>
           </h3>
           <div id="artist-comments" class="collapsible-content collapsed">Ingen kommentarer tilgjengelig.</div>
         </section>
 
-        <section class="lyrics">
+        <!-- Playlist Section - Expanded by default -->
+        <section class="playlist">
           <h3>
-            Lyrikk
-            <button id="toggle-lyrics" class="toggle-btn" title="Vis/skjul" aria-label="Vis/skjul lyrikk">▼</button>
+            <span>Spilleliste</span>
+            <button id="toggle-playlist" class="toggle-btn section-toggle" title="Vis/skjul"
+              aria-label="Vis/skjul spilleliste">▼</button>
           </h3>
-          <pre id="lyrics" class="collapsible-content">Ingen tilgjengelig lyrikk.</pre>
+          <ul id="playlist"></ul>
         </section>
       </div>
     </div>
@@ -86,4 +108,5 @@
   <script src="assets/js/songs/vw_Vegen_Heim.js"></script>
   <script src="assets/js/player.js"></script>
 </body>
+
 </html>

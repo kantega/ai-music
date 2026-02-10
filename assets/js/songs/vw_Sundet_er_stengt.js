@@ -3,6 +3,7 @@ playlist.push({
   "src": "music/vw_Sundet_er_stengt.mp3",
   "title": "Sundet er stengt",
   "artist": "Vidar Wahlberg",
+  "cover": "music/covers/vw_Sundet_er_stengt.jpg",
   "lyrics": `
 Klokka er fire om natta.
 De tror jeg sover.

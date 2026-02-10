@@ -18,6 +18,7 @@
   const artistEl = document.getElementById('artist');
   const albumEl = document.getElementById('album');
   const coverEl = document.getElementById('cover');
+  const coverPlaceholderEl = document.getElementById('cover-placeholder');
   const lyricsEl = document.getElementById('lyrics');
   const artistCommentsEl = document.getElementById('artist-comments');
   const playlistEl = document.getElementById('playlist');
@@ -53,21 +54,21 @@
       const li = document.createElement('li');
       li.dataset.index = i;
       li.addEventListener('click', () => loadTrack(i, true));
-      
+
       // Create title element
       const titleEl = document.createElement('div');
       titleEl.className = 'song-title';
       titleEl.textContent = t.title || t.src || `Track ${i + 1}`;
-      
+
       // Create artist element
       const artistEl = document.createElement('div');
       artistEl.className = 'song-artist';
       artistEl.textContent = t.artist || '';
-      
+
       // Append elements to list item
       li.appendChild(titleEl);
       li.appendChild(artistEl);
-      
+
       playlistEl.appendChild(li);
     });
     updateActive();
@@ -99,30 +100,22 @@
     albumEl.textContent = t.album || '';
     if (t.cover) {
       coverEl.src = t.cover;
+      coverEl.style.display = 'block';
+      if (coverPlaceholderEl) coverPlaceholderEl.style.display = 'none';
     } else {
-      coverEl.src = '';
+      coverEl.removeAttribute('src');
+      coverEl.style.display = 'none';
+      if (coverPlaceholderEl) coverPlaceholderEl.style.display = 'flex';
     }
-    // lyrics can be a string or a URL
     if (!t.lyrics) {
-      lyricsEl.textContent = 'Ingen lyrikk angitt.';
-    } else if (typeof t.lyrics === 'string' && (t.lyrics.startsWith('http://') || t.lyrics.startsWith('https://') || t.lyrics.endsWith('.txt') || t.lyrics.endsWith('.lrc'))) {
-      // For file:// protocol, we can't use fetch, so we'll show a message
-      // In a proper web server environment, this would work with fetch
-      lyricsEl.textContent = 'Lyrikk tilgjengelig (krever webserver for visning)';
+      lyricsEl.textContent = 'Ingen sangtekst angitt.';
     } else {
-      // inline lyrics text
       lyricsEl.textContent = t.lyrics;
     }
 
-    // artist comments can be a string or a URL
     if (!t.artist_comments) {
       artistCommentsEl.textContent = 'Ingen kommentarer tilgjengelig.';
-    } else if (typeof t.artist_comments === 'string' && (t.artist_comments.startsWith('http://') || t.artist_comments.startsWith('https://') || t.artist_comments.endsWith('.txt'))) {
-      // For file:// protocol, we can't use fetch, so we'll show a message
-      // In a proper web server environment, this would work with fetch
-      artistCommentsEl.textContent = 'Kommentarer tilgjengelig (krever webserver for visning)';
     } else {
-      // inline artist comments text
       artistCommentsEl.textContent = t.artist_comments;
     }
 
@@ -200,6 +193,37 @@
   toggleLyricsBtn.addEventListener('click', () => {
     lyricsEl.classList.toggle('collapsed');
     toggleLyricsBtn.textContent = lyricsEl.classList.contains('collapsed') ? '▶' : '▼';
+  });
+
+  // Toggle playlist
+  const togglePlaylistBtn = document.getElementById('toggle-playlist');
+  if (togglePlaylistBtn && playlistEl) {
+    togglePlaylistBtn.addEventListener('click', () => {
+      playlistEl.classList.toggle('collapsed');
+      togglePlaylistBtn.textContent = playlistEl.classList.contains('collapsed') ? '▶' : '▼';
+    });
+  }
+
+  // Make section headers clickable to toggle
+  document.querySelectorAll('.section-toggle').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent event from bubbling to header
+    });
+  });
+
+  // Make section headers clickable
+  document.querySelectorAll('section h3').forEach(header => {
+    header.style.cursor = 'pointer';
+    header.addEventListener('click', () => {
+      const section = header.parentElement;
+      const content = section.querySelector('.collapsible-content, ul#playlist');
+      const toggleBtn = header.querySelector('.toggle-btn');
+
+      if (content && toggleBtn) {
+        content.classList.toggle('collapsed');
+        toggleBtn.textContent = content.classList.contains('collapsed') ? '▶' : '▼';
+      }
+    });
   });
 
   // Initialize collapsed state based on screen size

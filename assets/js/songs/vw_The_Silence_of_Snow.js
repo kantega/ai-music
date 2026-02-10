@@ -3,6 +3,7 @@ playlist.push({
   "src": "music/vw_The_Silence_of_Snow.mp3",
   "title": "The Silence of Snow",
   "artist": "Vidar Wahlberg",
+  "cover": "music/covers/vw_The_Silence_of_Snow.jpg",
   "lyrics": `
 She is small as a whisper in a valley of wind,
 Wearing nothing but rags on her shivering skin.

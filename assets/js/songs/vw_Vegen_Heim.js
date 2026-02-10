@@ -3,6 +3,7 @@ playlist.push({
   "src": "music/vw_Vegen_Heim.mp3",
   "title": "Vegen Heim",
   "artist": "Vidar Wahlberg",
+  "cover": "music/covers/vw_Vegen_Heim.jpg",
   "lyrics": `
 E står i kø, det æ asfalt og grått
 Har gløymt kven e æ, og kor e har gått

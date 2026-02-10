@@ -3,6 +3,7 @@ playlist.push({
   "src": "music/vw_Orange_Reign.mp3",
   "title": "Orange Reign",
   "artist": "Vidar Wahlberg",
+  "cover": "music/covers/vw_Orange_Reign.jpg",
   "lyrics": `
 I heard the chatter in the pit, y'all think I'm sweet?
 Wait till I scrape your ugly face off the street.

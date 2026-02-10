@@ -3,6 +3,7 @@ playlist.push({
   "src": "music/vw_Gold_on_the_Floor.mp3",
   "title": "Gold on the Floor",
   "artist": "Vidar Wahlberg",
+  "cover": "music/covers/vw_Gold_on_the_Floor.jpg",
   "lyrics": `
 The dollar dropped, the market crashed, we saw the bottom fall
 We spent a decade in the dark, staring at the wall

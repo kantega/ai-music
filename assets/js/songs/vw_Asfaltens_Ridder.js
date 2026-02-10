@@ -3,6 +3,7 @@ playlist.push({
   "src": "music/vw_Asfaltens_Ridder.mp3",
   "title": "Asfaltens Ridder",
   "artist": "Vidar Wahlberg",
+  "cover": "music/covers/vw_Asfaltens_Ridder.jpg",
   "lyrics": `
 Det starta i skyggen, på betong og på is
 Et liv i en tunnel, til en altfor høy pris
