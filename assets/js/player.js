@@ -79,13 +79,18 @@
       const isActive = Number(li.dataset.index) === current;
       li.classList.toggle('active', isActive);
 
-      // Scroll active item to near the top
       if (isActive) {
-        li.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-          inline: 'nearest'
-        });
+        const containerHeight = playlistEl.clientHeight;
+        if (containerHeight > 0) {
+          const listRect = playlistEl.getBoundingClientRect();
+          const liRect = li.getBoundingClientRect();
+          const offsetWithin = liRect.top - listRect.top + playlistEl.scrollTop;
+          const targetTop = offsetWithin - (containerHeight / 2) + (li.offsetHeight / 2);
+          playlistEl.scrollTo({
+            top: Math.max(0, targetTop),
+            behavior: 'smooth'
+          });
+        }
       }
     });
   }
@@ -117,6 +122,14 @@
       artistCommentsEl.textContent = 'Ingen kommentarer tilgjengelig.';
     } else {
       artistCommentsEl.textContent = t.artist_comments;
+    }
+
+    if (!lyricsEl.classList.contains('collapsed')) {
+      lyricsEl.scrollTop = 0;
+    }
+
+    if (!artistCommentsEl.classList.contains('collapsed')) {
+      artistCommentsEl.scrollTop = 0;
     }
 
     updateActive();
