@@ -1,0 +1,13 @@
+// Make Trumpet Great Again (Techno Remix)
+playlist.push({
+  "src": "music/cfh_trumpettechno.mp3",
+  "title": "Make Trumpet Great Again (Techno Remix)",
+  "artist": "DJ Kalifen (Carl Fredrik)",
+  "album": "Make Trumpet Great Again",
+  "cover": "music/covers/cfh_trumpet.jpg",
+  "artist_comments": `
+Singelen Make Trumpet Great Again er tilgjengelig på Spotify. Dette er spor 3 av 3.
+
+Jeg har allerede nevnt “man kan lage techno av alt”. Men hva om man lager techno av det igjen? Her er resultatet! Dette oppleves som en mer tradisjonell techno-låt, men som fortsatt bærer spor av trompet-lekingen. Eksperimenterte med ulike KI-modeller for å få ønsket resultat, og endte med å måtte kombinere to stykker for å få en tilfredsstillende avslutning på låten.
+  `
+});

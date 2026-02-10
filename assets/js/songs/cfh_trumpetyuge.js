@@ -1,0 +1,13 @@
+// Make Trumpet Great Again (Yuge Edit)
+playlist.push({
+  "src": "music/cfh_trumpetyuge.mp3",
+  "title": "Make Trumpet Great Again (Yuge Edit)",
+  "artist": "DJ Kalifen (Carl Fredrik)",
+  "album": "Make Trumpet Great Again",
+  "cover": "music/covers/cfh_trumpet.jpg",
+  "artist_comments": `
+Singelen Make Trumpet Great Again er tilgjengelig på Spotify. Dette er spor 2 av 3.
+
+Motivasjonen her var å gjøre som de store artistene og ha en vanlig utgave og en “extended mix” av singlene sine. KI genererte en låt som den kortere tribute-versjonen er klippet ut fra. Yuge Edit tilsvarer _nesten_ KI-originalen. Yuge Edit ble også manuelt bearbeidet i Audacity, blant annet for å gi en tromme-inngang heller enn trompet-inngang. Deretter inneholder låten nesten to minutter som er identiske med tribute-versjonen. Med et ønske om å ha også en lengre avslutning, med ekstra schwung, så brukte jeg for første gang extend-funksjonaliteten til KI.
+  `
+});

@@ -1,0 +1,13 @@
+// Ze Epic TF
+playlist.push({
+  "src": "music/cfh_zeepictf.mp3",
+  "title": "Ze Epic TF",
+  "artist": "DJ Kalifen (Carl Fredrik)",
+  "album": "Ze Epic TF",
+  "cover": "music/covers/cfh_zeepictf.jpg",
+  "artist_comments": `
+Tilgjengelig som single på Spotify.
+
+Dette var den spennende første reisen mot et vellykket resultat. Målet var jo å lage noe i gaten trance/techno, og selv om mye av det som ble generert hørtes greit ut, så manglet det lille ekstra, det som gir magi. Da valgte jeg å utforske mulighetene for å krysse frem og tilbake mellom ulike stilarter, i håp om å fange opp lydbilder utover det vanlige. Her var vi innom Gregorian chant og Irish folk på vei mot trance. Resultatet ble så kult at dette måtte jo bare utgis.
+  `
+});

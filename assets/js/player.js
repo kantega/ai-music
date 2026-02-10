@@ -30,36 +30,28 @@
   const toggleCommentsBtn = document.getElementById('toggle-comments');
   const toggleLyricsBtn = document.getElementById('toggle-lyrics');
 
-  let playlist = [];
+  // playlist is defined in playlist.js
   let current = -1;
   let isPlaying = false;
 
   // Utility time formatter
-  function formatTime(s){
+  function formatTime(s) {
     if (!isFinite(s)) return "0:00";
-    const m = Math.floor(s/60);
-    const sec = Math.floor(s % 60).toString().padStart(2,'0');
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60).toString().padStart(2, '0');
     return `${m}:${sec}`;
   }
 
-  async function loadPlaylist(){
-    try{
-      const res = await fetch('data/songs.json', {cache: 'no-cache'});
-      if(!res.ok) throw new Error('Failed to fetch songs.json: ' + res.status);
-      playlist = await res.json();
-    }catch(err){
-      console.error(err);
-      playlist = [];
-    }
+  function loadPlaylist() {
     renderPlaylist();
-    if(playlist.length) loadTrack(0);
+    if (playlist.length) loadTrack(0);
   }
 
-  function renderPlaylist(){
+  function renderPlaylist() {
     playlistEl.innerHTML = '';
     playlist.forEach((t, i) => {
       const li = document.createElement('li');
-      li.textContent = (t.title || t.src || `Track ${i+1}`) + (t.artist ? ' — ' + t.artist : '');
+      li.textContent = (t.title || t.src || `Track ${i + 1}`) + (t.artist ? ' — ' + t.artist : '');
       li.dataset.index = i;
       li.addEventListener('click', () => loadTrack(i, true));
       playlistEl.appendChild(li);
@@ -67,13 +59,13 @@
     updateActive();
   }
 
-  function updateActive(){
+  function updateActive() {
     Array.from(playlistEl.children).forEach(li => {
       const isActive = Number(li.dataset.index) === current;
       li.classList.toggle('active', isActive);
 
       // Scroll active item to near the top
-      if(isActive){
+      if (isActive) {
         li.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
@@ -83,7 +75,7 @@
     });
   }
 
-  async function loadTrack(index, autoplay=false){
+  function loadTrack(index, autoplay = false) {
     if (index < 0 || index >= playlist.length) return;
     current = index;
     const t = playlist[index];
@@ -91,67 +83,51 @@
     titleEl.textContent = t.title || '';
     artistEl.textContent = t.artist || '';
     albumEl.textContent = t.album || '';
-    if(t.cover){
+    if (t.cover) {
       coverEl.src = t.cover;
     } else {
       coverEl.src = '';
     }
     // lyrics can be a string or a URL
-    if(!t.lyrics){
+    if (!t.lyrics) {
       lyricsEl.textContent = 'Ingen lyrikk angitt.';
-    } else if(typeof t.lyrics === 'string' && (t.lyrics.startsWith('http://') || t.lyrics.startsWith('https://') || t.lyrics.endsWith('.txt') || t.lyrics.endsWith('.lrc'))){
-      try{
-        const r = await fetch(t.lyrics);
-        if(r.ok){
-          const txt = await r.text();
-          lyricsEl.textContent = txt || 'Ingen lyrikk angitt.';
-        } else {
-          lyricsEl.textContent = 'Ingen lyrikk angitt.';
-        }
-      }catch(e){
-        lyricsEl.textContent = 'Ingen lyrikk angitt.';
-      }
+    } else if (typeof t.lyrics === 'string' && (t.lyrics.startsWith('http://') || t.lyrics.startsWith('https://') || t.lyrics.endsWith('.txt') || t.lyrics.endsWith('.lrc'))) {
+      // For file:// protocol, we can't use fetch, so we'll show a message
+      // In a proper web server environment, this would work with fetch
+      lyricsEl.textContent = 'Lyrikk tilgjengelig (krever webserver for visning)';
     } else {
       // inline lyrics text
       lyricsEl.textContent = t.lyrics;
     }
 
     // artist comments can be a string or a URL
-    if(!t.artist_comments){
+    if (!t.artist_comments) {
       artistCommentsEl.textContent = 'Ingen kommentarer tilgjengelig.';
-    } else if(typeof t.artist_comments === 'string' && (t.artist_comments.startsWith('http://') || t.artist_comments.startsWith('https://') || t.artist_comments.endsWith('.txt'))){
-      try{
-        const r = await fetch(t.artist_comments);
-        if(r.ok){
-          const txt = await r.text();
-          artistCommentsEl.textContent = txt || 'Ingen kommentarer tilgjengelig.';
-        } else {
-          artistCommentsEl.textContent = 'Ingen kommentarer tilgjengelig.';
-        }
-      }catch(e){
-        artistCommentsEl.textContent = 'Ingen kommentarer tilgjengelig.';
-      }
+    } else if (typeof t.artist_comments === 'string' && (t.artist_comments.startsWith('http://') || t.artist_comments.startsWith('https://') || t.artist_comments.endsWith('.txt'))) {
+      // For file:// protocol, we can't use fetch, so we'll show a message
+      // In a proper web server environment, this would work with fetch
+      artistCommentsEl.textContent = 'Kommentarer tilgjengelig (krever webserver for visning)';
     } else {
       // inline artist comments text
       artistCommentsEl.textContent = t.artist_comments;
     }
 
     updateActive();
-    if(autoplay){
-      audio.play().catch(()=>{/* autoplay might be blocked */});
+    if (autoplay) {
+      audio.play().catch(() => {/* autoplay might be blocked */ });
       isPlaying = true;
       updatePlayButton();
     }
   }
 
-  function updatePlayButton(){
+  function updatePlayButton() {
     playBtn.textContent = isPlaying ? '⏸️' : '▶️';
   }
 
   // Event handlers
   playBtn.addEventListener('click', () => {
-    if(!audio.src) return;
-    if(audio.paused){
+    if (!audio.src) return;
+    if (audio.paused) {
       audio.play();
     } else {
       audio.pause();
@@ -159,12 +135,12 @@
   });
 
   prevBtn.addEventListener('click', () => {
-    if(playlist.length === 0) return;
+    if (playlist.length === 0) return;
     loadTrack((current - 1 + playlist.length) % playlist.length, true);
   });
 
   nextBtn.addEventListener('click', () => {
-    if(playlist.length === 0) return;
+    if (playlist.length === 0) return;
     loadTrack((current + 1) % playlist.length, true);
   });
 
@@ -176,7 +152,7 @@
   });
 
   audio.addEventListener('timeupdate', () => {
-    if(!isFinite(audio.duration)) return;
+    if (!isFinite(audio.duration)) return;
     const pct = (audio.currentTime / audio.duration) * 100;
     progress.value = pct;
     currentTimeEl.textContent = formatTime(audio.currentTime);
@@ -188,7 +164,7 @@
 
   audio.addEventListener('ended', () => {
     // auto-next
-    if(current < playlist.length - 1) loadTrack(current + 1, true);
+    if (current < playlist.length - 1) loadTrack(current + 1, true);
     else {
       audio.currentTime = 0;
       audio.pause();
@@ -196,7 +172,7 @@
   });
 
   progress.addEventListener('input', () => {
-    if(!isFinite(audio.duration)) return;
+    if (!isFinite(audio.duration)) return;
     audio.currentTime = (progress.value / 100) * audio.duration;
   });
 
