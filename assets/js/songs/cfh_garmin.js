@@ -4,6 +4,7 @@ playlist.push({
   "title": "Garmin",
   "artist": "DJ Kalifen (Carl Fredrik)",
   "album": "Garmin",
+  "cover": "music/covers/cfh_garmin.jpg",
   "artist_comments": `
 Foreløpig ikke utgitt.
 
